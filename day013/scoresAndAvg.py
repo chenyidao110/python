@@ -12,3 +12,10 @@ for i,name in enumerate(names):
     for j,course in enumerate(courses):
         scores[i][j] = float(input(f'{course}:'))
 print()
+
+print('-' * 5,' students avg scores','-' * 5)
+
+for index,name in enumerate(names):
+    avg_score = sum(scores[index]) / len(courses))
+    print(f'{name} avg score is: {avg_score: .1f}')
+print()
