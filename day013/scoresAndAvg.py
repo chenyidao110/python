@@ -16,6 +16,6 @@ print()
 print('-' * 5,' students avg scores','-' * 5)
 
 for index,name in enumerate(names):
-    avg_score = sum(scores[index]) / len(courses))
+    avg_score = sum(scores[index]) / len(courses)
     print(f'{name} avg score is: {avg_score: .1f}')
 print()
