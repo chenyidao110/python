@@ -20,9 +20,9 @@ def random_select():
     #对红色球进行排序
     selected_balls.sort()
     #用1到16的随机数表示选中的蓝色球并追加到列表中
-    selected_balls.append(1,16)
+    selected_balls.append(randint(1,16))
     return selected_balls
 
 n = int(input('机选几注：'))
 for _ in range(n):
-    display(random_select)
+    display(random_select())
