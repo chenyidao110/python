@@ -33,4 +33,3 @@ class Teacher(Person):
     def teach(self,course_name):
         print(f'{self.name} {self.title} is teaching {course_name}')
 
-
