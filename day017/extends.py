@@ -1,5 +1,5 @@
 class Person:
-    """Person class"""
+    """person class"""
 
     def __init__(self, name, age):
         self.name = name
@@ -9,8 +9,7 @@ class Person:
         print(f'{self.name} is eating.')
 
     def sleep(self):
-        print(f'{self.name} is sleeping.')
-
+        print(f'{self.name} is slepping.')
 
 
 class Student(Person):
@@ -24,12 +23,21 @@ class Student(Person):
 
 
 class Teacher(Person):
-    """Teacher class"""
+    """teacher class"""
 
     def __init__(self, name, age, title):
         super().__init__(name, age)
         self.title = title
 
-    def teach(self,course_name):
+    def teach(self, course_name):
         print(f'{self.name} {self.title} is teaching {course_name}')
 
+stu1 = Student('baiyuanfang', 21)
+stu2 = Student('direnjie', 22)
+teacher = Teacher('wuzetian', 35, 'fujiaoshou')
+
+stu1.eat()
+stu2.sleep()
+
+teacher.teach('Python Programme Design')
+stu1.study('Python Programme Design')
