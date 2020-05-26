@@ -2,12 +2,12 @@ from enum import Enum
 import random
 
 class Suite(Enum):
-    """hua se"""
+    """花色"""
     SPADE, HEART, CLUB, DIAMOND = range(4)
 
 
 class Card:
-    """card"""
+    """牌"""
 
     def __init__(self, suite, face):
         self.suite = suite
@@ -16,10 +16,16 @@ class Card:
     def __repr__(self):
         suites = '♠♥♣♦'
         faces = ['', 'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-        return f'{suites[self.suite.value]} {faces[self.face]}'
-
+        return f'{suites[self.suite.value]}{faces[self.face]}'
+    
+    def __lt__(self, other):
+        #花色相同比较点数的大小
+        if self.suite == other.suite:
+            return self.face < other.face
+        #花色不同比较花色对应的值
+        return self.suite.value < other.suite.value
 class Poker:
-    """poker"""
+    """扑克"""
 
     def __init__(self):
         self.cards = [Card(suite, face) for suite in Suite for face in range(1, 14)]
@@ -40,7 +46,7 @@ class Poker:
         return self.current < len(self.cards)
 
 class Player:
-    """player"""
+    """玩家"""
 
     def __init__(self, name):
         self.name = name
@@ -52,3 +58,13 @@ class Player:
     def arrange(self):
         self.cards.sort()
 
+poker = Poker()
+poker.shuffle()
+players = [Player('东邪'), Player('西毒'), Player('南帝'), Player('北丐')]
+for _ in range(13):
+    for player in players:
+        player.get_one(poker.deal())
+    for player in players:
+        player.arrange()
+        print(f'{player.name}: ', end='')
+        print(player.cards)
